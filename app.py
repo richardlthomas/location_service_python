@@ -79,13 +79,15 @@ def create_app():
             elif 'administrative_area_level_1' in types:
                 return_values.update({'state': component['short_name']})
             elif 'postal_code' in types:
-                return_values.update({'postalCode': component['short_name']})
+                return_values.update({'postal_code': component['short_name']})
             elif 'country' in types:
                 return_values.update({'country': component['short_name']})
         street = re.sub(" +", " ", " ".join(str(value) for value in [street_number, street_name]).strip())
         if street != "":
             return_values.update({'street': street})
         return return_values
+
+    return app
 
 
 if __name__ == '__main__':
